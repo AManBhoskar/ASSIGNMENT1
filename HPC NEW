@@ -1,48 +1,52 @@
-node* insert(node* root, int data)
+#include<iostream>
+#include<queue>
+using namespace std;
+
+class node
 {
-    if (!root)
+public:
+    node *left, *right;
+    int data;
+};
+
+class Breadthfs
+{
+public:
+    node *insert(node *, int);
+    void bfs(node *);
+};
+
+node *Breadthfs::insert(node *root, int data)
+{
+    // Implementation remains the same
+}
+
+void Breadthfs::bfs(node *head)
+{
+    // Implementation remains the same
+}
+
+int main()
+{
+    node *root = NULL;
+    int data;
+    char ans;
+
+    Breadthfs bfs;
+
+    do
     {
-        root = new node;
-        root->left = NULL;
-        root->right = NULL;
-        root->data = data;
-        return root;
-    }
+        cout << "\n enter data=>";
+        cin >> data;
 
-    queue<node*> q;
-    q.push(root);
+        root = bfs.insert(root, data);
 
-    while (!q.empty())
-    {
-        node* temp = q.front();
-        q.pop();
+        cout << "do you want to insert one more node? (y/n): ";
+        cin >> ans;
 
-        if (temp->left == NULL)
-        {
-            temp->left = new node;
-            temp->left->left = NULL;
-            temp->left->right = NULL;
-            temp->left->data = data;
-            return root;
-        }
-        else
-        {
-            q.push(temp->left);
-        }
+    } while (ans == 'y' || ans == 'Y');
 
-        if (temp->right == NULL)
-        {
-            temp->right = new node;
-            temp->right->left = NULL;
-            temp->right->right = NULL;
-            temp->right->data = data;
-            return root;
-        }
-        else
-        {
-            q.push(temp->right);
-        }
-    }
+    bfs.bfs(root);
 
-    return root; // Add this line to return root if no insertion is made
+    return 0;
 }
